@@ -174,7 +174,7 @@ function initMap() {
 }
 
 function drop() {
-    document.getElementById("drop").disabled = true;
+    //document.getElementById("drop").disabled = true;
     map.setZoom(8);
     map.setCenter({lat: 52.598942, lng: 25.349901});
     clearMarkers();
@@ -201,7 +201,7 @@ function markers(i) {
             title: place[0]
         }));
         if (i == places.length - 1) {
-            document.getElementById("drop").disabled = false;
+            //document.getElementById("drop").disabled = false;
         }
         all_markers[i].addListener('click', function () {
 
