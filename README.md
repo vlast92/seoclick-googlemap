@@ -1,1 +1,1 @@
-Module for adding GoogleMap on your site. Test
+Module for adding GoogleMap on your site.
