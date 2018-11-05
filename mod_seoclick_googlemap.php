@@ -18,7 +18,7 @@ $document->addStyleSheet("/modules/mod_seoclick_googlemap/assets/css/styles.css"
 
 JHtml::_('jquery.framework');
 $document->addScript("/modules/mod_seoclick_googlemap/assets/js/map.js");
-$document->addScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAtNQUb5pPkTalqxWPNdcy3f9ToAsUHo0U&callback=initMap", true, true);
+$document->addScript("https://maps.googleapis.com/maps/api/js?key=123456789=initMap", true, true);
 
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 
