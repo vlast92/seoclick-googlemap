@@ -1,6 +1,7 @@
-.seoclick-map {
-  position: relative; }
-  .seoclick-map .map-loader {
+.seoclick-map{
+  position: relative;
+
+  .map-loader{
     position: absolute;
     width: 100%;
     top: 50%;
@@ -10,14 +11,17 @@
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     left: 0;
-    text-align: center; }
-    .seoclick-map .map-loader > div {
-      margin-bottom: 1rem; }
-  .seoclick-map .controls {
+    text-align: center;
+
+    > div{
+      margin-bottom: 1rem;
+    }
+  }
+  .controls{
     margin-left: .31rem;
     background: rgba(255, 255, 255, 0.7);
     padding: .625rem;
     border-radius: .31rem;
-    color: #000; }
-
-/*# sourceMappingURL=styles.css.map */
+    color: #000;
+  }
+}
