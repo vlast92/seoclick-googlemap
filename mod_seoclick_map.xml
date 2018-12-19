@@ -26,6 +26,10 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
+                <field name="map_api" type="list" default="google" label="Api карт" description="">
+                    <option value="google">Google</option>
+                    <option value="yandex">Yandex</option>
+                </field>
 				<field
 					name="note"
 					type="note"

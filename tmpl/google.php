@@ -10,7 +10,7 @@
 
 defined('_JEXEC') or die;
 
-$module_id = 'google-map-' . $module->id;
+$module_id = 'google-map-' . $module->id . '-' . rand(1, 99999);
 
 $script = "
         document.addEventListener(\"DOMContentLoaded\", function(){
