@@ -39,7 +39,7 @@ if (!empty($places[$keys[0]]["lat"]) && !empty($places[$keys[0]]["lng"]))
             {
               name: '" . $place["name"] . "',
               position: {lat: " . $place["lat"] . ", lng: " . $place["lng"] . "}";
-		if(!empty($place["info_window_content"])){
+		if(!empty($place["info_window_content"]) && $info_window){
 			$script .= ",
               infoWindowContent: '<div class=\"markerContent\">" . str_replace("\r\n", "<br/>", $place["info_window_content"]) . "</div>'";
 		}
