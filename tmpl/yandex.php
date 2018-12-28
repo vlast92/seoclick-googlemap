@@ -24,8 +24,34 @@ $script = "
                         var yandexMap_".$module->id." = new YandexMap({
                         id: '" . $module_id . "',
                         centerCoord: [" . $center_lat . ", " . $center_lng . "],
-                        zoom: " . $map_zoom . "});
-                     });";
+                        zoom: " . $map_zoom . "});";
+
+$keys   = array_keys($places);
+if (!empty($places[$keys[0]]["lat"]) && !empty($places[$keys[0]]["lng"]))
+{
+	$counter      = 1;
+	$places_count = count($places);
+	$script       .= "yandexMap_".$module->id.".addPlace([";
+
+	foreach ($places as $place)
+	{
+		$script .= "
+            {
+              name: '" . $place["name"] . "',
+              position: {lat: " . $place["lat"] . ", lng: " . $place["lng"] . "}";
+		if(!empty($place["info_window_content"])){
+			$script .= ",
+              infoWindowContent: '<div class=\"markerContent\">" . str_replace("\r\n", "<br/>", $place["info_window_content"]) . "</div>'";
+		}
+		$script .= "
+            }
+        ";
+		if ($counter++ != $places_count) $script .= ',';
+	}
+
+	$script .= "]);";
+}
+                     $script .= "});";
 $script .= "
     });
 ";
