@@ -8,6 +8,8 @@ function YandexMap(params) {
         controls: []
     });
 
+    if (!params.wheel_zoom) map.behaviors.disable('scrollZoom');
+
     this.addPlace = function (params) {
 
         for (var i = 0; i < params.length; i++) {
@@ -20,9 +22,14 @@ function YandexMap(params) {
         }
     };
 
+    this.addControl = function (params) {
+
+        map.controls.add(params);
+    };
+
     /** открываем функции и переменные, назначая их свойствам объекта */
     return {
-        // addControl: this.addControl,
+        addControl: this.addControl,
         addPlace: this.addPlace /*,
                                 clearMarkers: this.clearMarkers*/
     };

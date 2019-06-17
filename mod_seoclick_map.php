@@ -23,6 +23,7 @@ $marker_image = $params -> get("marker_image", false);
 $info_window = $params -> get("info_window");
 $center_lat = $params -> get("lat");
 $center_lng = $params -> get("lng");
+$zoom_control_wheel = $params -> get("zoom_control_wheel");
 $map_controls = array(
 	"custom" => $params -> get("custom_control"),
 	"zoom" => $params -> get("zoom_control"),

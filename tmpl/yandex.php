@@ -21,17 +21,18 @@ $script = "
            window.addEventListener('load', function(){
                     document.getElementById('" . $module_id . "').innerHTML = '';
                      ymaps.ready(function(){
-                        var yandexMap_".$module->id." = new YandexMap({
+                        var yandexMap_" . $module->id . " = new YandexMap({
                         id: '" . $module_id . "',
                         centerCoord: [" . $center_lat . ", " . $center_lng . "],
-                        zoom: " . $map_zoom . "});";
+                        zoom: " . $map_zoom . ",
+                        wheel_zoom: ". $zoom_control_wheel ."});";
 
-$keys   = array_keys($places);
+$keys = array_keys($places);
 if (!empty($places[$keys[0]]["lat"]) && !empty($places[$keys[0]]["lng"]))
 {
 	$counter      = 1;
 	$places_count = count($places);
-	$script       .= "yandexMap_".$module->id.".addPlace([";
+	$script       .= "yandexMap_" . $module->id . ".addPlace([";
 
 	foreach ($places as $place)
 	{
@@ -39,7 +40,8 @@ if (!empty($places[$keys[0]]["lat"]) && !empty($places[$keys[0]]["lng"]))
             {
               name: '" . $place["name"] . "',
               position: {lat: " . $place["lat"] . ", lng: " . $place["lng"] . "}";
-		if(!empty($place["info_window_content"]) && $info_window){
+		if (!empty($place["info_window_content"]) && $info_window)
+		{
 			$script .= ",
               infoWindowContent: '<div class=\"markerContent\">" . str_replace("\r\n", "<br/>", $place["info_window_content"]) . "</div>'";
 		}
@@ -51,7 +53,12 @@ if (!empty($places[$keys[0]]["lat"]) && !empty($places[$keys[0]]["lng"]))
 
 	$script .= "]);";
 }
-                     $script .= "});";
+
+if ($map_controls["zoom"]) $script .= "yandexMap_" . $module->id . ".addControl('zoomControl');";
+if ($map_controls["mapType"]) $script .= "yandexMap_" . $module->id . ".addControl('typeSelector');";
+if ($map_controls["fullscreen"]) $script .= "yandexMap_" . $module->id . ".addControl('fullscreenControl');";
+
+$script .= "});";
 $script .= "
     });
 ";

@@ -91,10 +91,21 @@
 						type="radio"
 						default="1"
 						label="MOD_SEOCLICK_MAP_CONTROLS_CUSTOM"
-						class="btn-group btn-group-yesno">
+						class="btn-group btn-group-yesno"
+                        showon="map_api:google">
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
+                <field
+                        name="zoom_control_wheel"
+                        type="radio"
+                        default="1"
+                        label="MOD_SEOCLICK_MAP_CONTROLS_ZOOM_WHEEL"
+                        class="btn-group btn-group-yesno"
+                        showon="map_api:yandex">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
 				<field
 					name="zoom_control"
 					type="radio"
@@ -118,7 +129,8 @@
 						type="radio"
 						default="1"
 						label="MOD_SEOCLICK_MAP_CONTROLS_STREET_VIEW"
-						class="btn-group btn-group-yesno">
+						class="btn-group btn-group-yesno"
+                        showon="map_api:google">
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
