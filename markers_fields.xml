@@ -26,10 +26,18 @@
             type="note"
             label="MOD_SEOCLICK_MAP_INFO_WINDOW"/>
         <field
+                name="info_window_image"
+                type="media"
+                label="MOD_SEOCLICK_MAP_INFO_WINDOW_IMAGE"
+                description="MOD_SEOCLICK_MAP_INFO_WINDOW_IMAGE_DESCRIPTION"
+                preview="true"
+                directory="/" />
+        <field
             name="info_window_content"
             type="textarea"
             label="MOD_SEOCLICK_MAP_INFO_WINDOW_CONTENT"
+            description="MOD_SEOCLICK_MAP_INFO_WINDOW_CONTENT_DESCRIPTION"
             rows="10"
-            filter="html"/>
+            filter="raw"/>
     </fieldset>
 </form>

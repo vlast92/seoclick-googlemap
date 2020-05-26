@@ -19,6 +19,7 @@ $api = $params->get("map_api");
 $key = $params->get("google_key");
 $map_height = $params -> get("map_height", 500);
 $map_zoom = $params -> get("map_zoom", 15);
+$map_zoom_marker_click = $params -> get("map_zoom_marker_click", 16);
 $marker_image = $params -> get("marker_image", false);
 $info_window = $params -> get("info_window");
 $center_lat = $params -> get("lat");

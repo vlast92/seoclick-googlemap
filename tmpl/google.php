@@ -21,10 +21,11 @@ $script = "
            window.addEventListener('load', function(){
                     document.getElementById('" . $module_id . "').innerHTML = '';
                     
-                    var googleMap_".$module->id." = new GoogleMap({
+                    var googleMap_" . $module->id . " = new GoogleMap({
                         id: '" . $module_id . "',
                         centerCoord: {lat: " . $center_lat . ", lng: " . $center_lng . "},
                         zoom: " . $map_zoom . ",
+                        mapZoomMarkerClick: " . $map_zoom_marker_click . ",
                         marker: {
                             animation: 'google.maps.Animation.DROP'";
 if ($marker_image)
@@ -45,7 +46,7 @@ if (!empty($places[$keys[0]]["lat"]) && !empty($places[$keys[0]]["lng"]))
 {
 	$counter      = 1;
 	$places_count = count($places);
-	$script       .= "googleMap_".$module->id.".addPlace([";
+	$script       .= "googleMap_" . $module->id . ".addPlace([";
 
 	foreach ($places as $place)
 	{
@@ -53,10 +54,21 @@ if (!empty($places[$keys[0]]["lat"]) && !empty($places[$keys[0]]["lng"]))
             {
               name: '" . $place["name"] . "',
               position: {lat: " . $place["lat"] . ", lng: " . $place["lng"] . "}";
-		if(!empty($place["info_window_content"])){
-			$script .= ",
-              infoWindowContent: '<div class=\"markerContent\">" . str_replace("\r\n", "<br/>", $place["info_window_content"]) . "</div>'";
-        }
+		if (!empty($place["info_window_content"]))
+		{
+			$infoWindowContent = '<div class=\"markerContent g-grid\">';
+
+			if ($place['info_window_image']) $infoWindowContent .= '<div class="image"><img src="/' . $place['info_window_image'] . '" alt="" /></div>';
+
+			$infoWindowContent .= '<div class="content">';
+			$infoWindowContent .= '<div class="title">' . nl2br($place["name"]) . '</div>';
+			$infoWindowContent .= '<div class="body">' . nl2br($place["info_window_content"]) . '</div>';
+			$infoWindowContent .= '</div>';
+
+			$infoWindowContent .= '</div>';
+			$script            .= ",
+              infoWindowContent: '" . str_replace("\r\n", "", $infoWindowContent) . "'";
+		}
 		$script .= "
             }
         ";
@@ -68,7 +80,7 @@ if (!empty($places[$keys[0]]["lat"]) && !empty($places[$keys[0]]["lng"]))
 
 if ($map_controls["custom"])
 {
-	$script .= "googleMap_".$module->id.".addControl({
+	$script .= "googleMap_" . $module->id . ".addControl({
                         class: 'controls',
                         position: 'LEFT_BOTTOM',
                         content: '<p>Левый клик по маркеру - приблизить</p><p>Правый клик по маркеру - отдалить</p>'

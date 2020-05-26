@@ -1,21 +1,21 @@
 "use strict";
 
-function GoogleMap(params) {
+function GoogleMap(mapParams) {
     var _this = this;
 
-    var map = new google.maps.Map(document.getElementById(params.id), {
-        center: params.centerCoord,
-        zoom: params.zoom,
-        zoomControl: params.zoomControl,
-        mapTypeControl: params.mapTypeControl,
-        streetViewControl: params.streetViewControl,
-        fullscreenControl: params.fullscreenControl
+    var map = new google.maps.Map(document.getElementById(mapParams.id), {
+        center: mapParams.centerCoord,
+        zoom: mapParams.zoom,
+        zoomControl: mapParams.zoomControl,
+        mapTypeControl: mapParams.mapTypeControl,
+        streetViewControl: mapParams.streetViewControl,
+        fullscreenControl: mapParams.fullscreenControl
     }),
-        markerConfig = params.marker;
+        markerConfig = mapParams.marker;
 
     var infoWindow = null;
 
-    if (params.info_window) {
+    if (mapParams.info_window) {
         infoWindow = new google.maps.InfoWindow({ map: map });
         infoWindow.close();
     }
@@ -48,11 +48,10 @@ function GoogleMap(params) {
     this.addMarkerListeners = function (params) {
 
         markers[params.index].addListener('click', function () {
-            map.setZoom(16);
+            map.setZoom(mapParams.mapZoomMarkerClick);
             map.setCenter(this.getPosition());
 
             if (infoWindow !== null && params.infoWindowContent !== undefined) {
-                console.log("params.infoWindowContent ", params.infoWindowContent);
                 infoWindow.close();
                 infoWindow.open(map, this);
                 infoWindow.setContent(params.infoWindowContent);
@@ -71,7 +70,7 @@ function GoogleMap(params) {
             if (infoWindow !== null) {
                 infoWindow.close();
             }
-            map.setZoom(7);
+            map.setZoom(mapParams.zoom);
             map.setCenter(this.getPosition());
         });
     };
