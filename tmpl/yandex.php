@@ -40,6 +40,17 @@ if (!empty($places[$keys[0]]["lat"]) && !empty($places[$keys[0]]["lng"]))
             {
               name: '" . $place["name"] . "',
               position: {lat: " . $place["lat"] . ", lng: " . $place["lng"] . "}";
+		if ($marker_image && $marker_image_width && $marker_image_height)
+		{
+			$script .= " ,
+			    icon: {
+			        iconLayout: 'default#image',
+			        iconImageHref: '" . $marker_image . "',
+			        iconImageSize: [$marker_image_width, $marker_image_height],
+			        iconImageOffset: [$marker_image_offset_x, $marker_image_offset_y]
+			    }"
+                ;
+		}
 		if (!empty($place["info_window_content"]) && $info_window)
 		{
 			$script .= ",
@@ -57,6 +68,11 @@ if (!empty($places[$keys[0]]["lat"]) && !empty($places[$keys[0]]["lng"]))
 if ($map_controls["zoom"]) $script .= "yandexMap_" . $module->id . ".addControl('zoomControl');";
 if ($map_controls["mapType"]) $script .= "yandexMap_" . $module->id . ".addControl('typeSelector');";
 if ($map_controls["fullscreen"]) $script .= "yandexMap_" . $module->id . ".addControl('fullscreenControl');";
+if ($map_controls["geolocation_control"]) $script .= "yandexMap_" . $module->id . ".addControl('geolocationControl');";
+if ($map_controls["search_control"]) $script .= "yandexMap_" . $module->id . ".addControl('search_control');";
+if ($map_controls["route_control"]) $script .= "yandexMap_" . $module->id . ".addControl('routeButtonControl');";
+if ($map_controls["traffic_control"]) $script .= "yandexMap_" . $module->id . ".addControl('trafficControl');";
+if ($map_controls["ruler_control"]) $script .= "yandexMap_" . $module->id . ".addControl('rulerControl');";
 
 $script .= "});";
 $script .= "

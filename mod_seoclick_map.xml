@@ -7,7 +7,7 @@
 	<authorUrl>https://seoclick.by</authorUrl>
 	<copyright>A copyright</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>1.1</version>
+	<version>1.2</version>
 	<description>MOD_SEOCLICK_MAP_XML_DESCRIPTION</description>
 
 	<files>
@@ -63,6 +63,32 @@
 					preview="true"
 					directory="/" />
 				<field
+						name="marker_image_width"
+						type="number"
+						min="0"
+						label="MOD_SEOCLICK_MAP_MARKER_IMAGE_WIDTH"
+						showon="map_api:yandex"/>
+				<field
+						name="marker_image_height"
+						type="number"
+						min="0"
+						label="MOD_SEOCLICK_MAP_MARKER_IMAGE_HEIGHT"
+						showon="map_api:yandex"/>
+				<field
+						name="marker_image_offset_x"
+						type="number"
+						label="MOD_SEOCLICK_MAP_MARKER_IMAGE_OFFSET_X"
+						description="MOD_SEOCLICK_MAP_MARKER_IMAGE_OFFSET_X_DESCRIPTION"
+						default="0"
+						showon="map_api:yandex"/>
+				<field
+						name="marker_image_offset_y"
+						type="number"
+						default="0"
+						label="MOD_SEOCLICK_MAP_MARKER_IMAGE_OFFSET_Y"
+						description="MOD_SEOCLICK_MAP_MARKER_IMAGE_OFFSET_Y_DESCRIPTION"
+						showon="map_api:yandex"/>
+				<field
 						name="info_window"
 						type="radio"
 						default="0"
@@ -99,11 +125,61 @@
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
+				<field
+						name="zoom_control_wheel"
+						type="radio"
+						default="1"
+						label="MOD_SEOCLICK_MAP_CONTROLS_ZOOM_WHEEL"
+						class="btn-group btn-group-yesno"
+						showon="map_api:yandex">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
                 <field
-                        name="zoom_control_wheel"
+                        name="geolocation_control"
                         type="radio"
                         default="1"
-                        label="MOD_SEOCLICK_MAP_CONTROLS_ZOOM_WHEEL"
+                        label="MOD_SEOCLICK_MAP_CONTROLS_GEOLOCATION"
+                        class="btn-group btn-group-yesno"
+                        showon="map_api:yandex">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+				<field
+                        name="search_control"
+                        type="radio"
+                        default="1"
+                        label="MOD_SEOCLICK_MAP_CONTROLS_SEARCH"
+                        class="btn-group btn-group-yesno"
+                        showon="map_api:yandex">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+				<field
+                        name="route_control"
+                        type="radio"
+                        default="1"
+                        label="MOD_SEOCLICK_MAP_CONTROLS_ROUTE"
+                        class="btn-group btn-group-yesno"
+                        showon="map_api:yandex">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+				<field
+                        name="traffic_control"
+                        type="radio"
+                        default="1"
+                        label="MOD_SEOCLICK_MAP_CONTROLS_TRAFFIC"
+                        class="btn-group btn-group-yesno"
+                        showon="map_api:yandex">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+				<field
+                        name="ruler_control"
+                        type="radio"
+                        default="1"
+                        label="MOD_SEOCLICK_MAP_CONTROLS_RULER"
                         class="btn-group btn-group-yesno"
                         showon="map_api:yandex">
                     <option value="1">JYES</option>
